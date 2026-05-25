@@ -1,550 +1,1018 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Antivisual Engine</title>
-    <link rel="icon" href="img/logo.jpg" type="image/gif/png/jpg">
-    <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
-    <link rel="stylesheet" href="slick/slick.css">
-    <link rel="stylesheet" href="slick/slick-theme.css">
-    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <title>Antivisual Engine</title>
 
-  </head>
-  <body>    
-    <!-- Hero section -->
-    <section id="infinite" class="text-white tm-font-big tm-parallax">
-      
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
-        <div class="container">   
-          <div class="tm-next">
-              <a href="#infinite" class="navbar-brand">Antivisual Engine</a>
-          </div>             
-            
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars navbar-toggler-icon"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#infinite">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#whatwedo">Engine details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link tm-nav-link" href="#testimonials">Testimonials</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#gallery">Gallery</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#contact">Contact</a>
-              </li>                    
-            </ul>
-          </div>        
-        </div>
-      </nav>
-      
-      <div class="text-center tm-hero-text-container">
-        <div class="tm-hero-text-container-inner">
-            <!--<h2 class="tm-hero-title">Antivisual Engine</h2>
-            <p class="tm-hero-subtitle">
-              POWERED BY <B>AI ANIIMS</B>
-              <br>12.5.6 Version
-            </p>-->
-        </div>        
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#050816;
+      --card:#ffffff08;
+      --border:#ffffff14;
+      --text:#ffffff;
+      --muted:#b8b8b8;
+      --cyan:#00f0ff;
+      --purple:#8b5cf6;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#00f0ff22;
+      top:-120px;
+      left:-120px;
+      filter:blur(120px);
+      z-index:-2;
+      animation:blob1 12s ease-in-out infinite alternate;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#8b5cf622;
+      bottom:-150px;
+      right:-120px;
+      filter:blur(120px);
+      z-index:-2;
+      animation:blob2 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes blob1{
+      from{
+        transform:translate(0,0) scale(1);
+      }
+      to{
+        transform:translate(60px,40px) scale(1.15);
+      }
+    }
+
+    @keyframes blob2{
+      from{
+        transform:translate(0,0) scale(1);
+      }
+      to{
+        transform:translate(-50px,-40px) scale(1.2);
+      }
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    section{
+      padding:120px 8%;
+      position:relative;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:22px 8%;
+      transition:0.4s;
+      backdrop-filter:blur(12px);
+    }
+
+    .navbar.scrolled{
+      background:rgba(5,8,22,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrapper{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-family:'Orbitron',sans-serif;
+      font-size:1.5rem;
+      font-weight:700;
+      color:var(--cyan);
+      letter-spacing:2px;
+      animation:logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow{
+      from{
+        text-shadow:0 0 10px #00f0ff44;
+      }
+      to{
+        text-shadow:0 0 25px #00f0ffaa;
+      }
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      color:#d4d4d4;
+      position:relative;
+      transition:0.3s;
+    }
+
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:var(--cyan);
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--cyan);
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:1.7rem;
+      cursor:pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .hero-bg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      animation:heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom{
+      from{
+        transform:scale(1.05);
+      }
+      to{
+        transform:scale(1.15);
+      }
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(
+        to bottom,
+        rgba(5,8,22,0.4),
+        rgba(5,8,22,0.94)
+      );
+      z-index:1;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:900px;
+      animation:fadeUp 1.2s ease;
+    }
+
+    .hero-tag{
+      display:inline-block;
+      padding:10px 22px;
+      border-radius:50px;
+      background:#ffffff10;
+      border:1px solid #ffffff18;
+      color:var(--cyan);
+      margin-bottom:30px;
+      backdrop-filter:blur(12px);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero h1{
+      font-size:5.2rem;
+      line-height:1.05;
+      margin-bottom:25px;
+      font-family:'Orbitron',sans-serif;
+      background:linear-gradient(to right,#ffffff,#00f0ff,#8b5cf6);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:fadeUp 1.4s ease;
+    }
+
+    .hero p{
+      color:#d4d4d4;
+      line-height:2;
+      font-size:1.08rem;
+      max-width:760px;
+      margin:auto;
+      animation:fadeUp 1.6s ease;
+    }
+
+    .hero-buttons{
+      margin-top:45px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      animation:fadeUp 1.8s ease;
+    }
+
+    .btn{
+      padding:16px 34px;
+      border-radius:16px;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      transition:0.4s;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--cyan),var(--purple));
+      color:white;
+      box-shadow:0 10px 40px rgba(0,240,255,0.2);
+    }
+
+    .btn-secondary{
+      background:#ffffff08;
+      border:1px solid #ffffff14;
+      backdrop-filter:blur(12px);
+    }
+
+    .btn:hover{
+      transform:translateY(-8px) scale(1.03);
+    }
+
+    /* =========================
+       SECTION TITLE
+    ========================= */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title span{
+      color:var(--cyan);
+      letter-spacing:4px;
+      font-size:0.85rem;
+      text-transform:uppercase;
+    }
+
+    .section-title h2{
+      margin-top:15px;
+      font-size:3rem;
+      font-family:'Orbitron',sans-serif;
+    }
+
+    /* =========================
+       GLASS
+    ========================= */
+
+    .glass{
+      background:var(--card);
+      border:1px solid var(--border);
+      backdrop-filter:blur(14px);
+      border-radius:26px;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      padding:35px;
+      transition:0.5s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .feature-card::before{
+      content:'';
+      position:absolute;
+      width:120px;
+      height:120px;
+      background:#00f0ff11;
+      border-radius:50%;
+      top:-40px;
+      right:-40px;
+      transition:0.5s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-12px);
+      border-color:#00f0ff66;
+    }
+
+    .feature-card:hover::before{
+      transform:scale(1.8);
+    }
+
+    .feature-icon{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#00f0ff22,#8b5cf622);
+      color:var(--cyan);
+      font-size:1.6rem;
+      margin-bottom:25px;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .feature-card h3{
+      margin-bottom:15px;
+      font-size:1.3rem;
+    }
+
+    .feature-card p{
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .gallery-item{
+      overflow:hidden;
+      border-radius:24px;
+      position:relative;
+      cursor:pointer;
+    }
+
+    .gallery-item img{
+      transition:0.7s;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.12) rotate(2deg);
+    }
+
+    .gallery-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);
+      display:flex;
+      align-items:flex-end;
+      padding:25px;
+      opacity:0;
+      transition:0.5s;
+    }
+
+    .gallery-item:hover .gallery-overlay{
+      opacity:1;
+    }
+
+    /* =========================
+       TESTIMONIAL
+    ========================= */
+
+    .testimonial{
+      max-width:900px;
+      margin:auto;
+      padding:60px 40px;
+      text-align:center;
+      transition:0.5s;
+    }
+
+    .testimonial:hover{
+      transform:translateY(-8px);
+    }
+
+    .founder-img{
+      width:230px;
+      height:230px;
+      border-radius:50%;
+      object-fit:cover;
+      margin:auto;
+      margin-bottom:25px;
+      border:4px solid var(--cyan);
+      animation:profileGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes profileGlow{
+      from{
+        box-shadow:0 0 20px rgba(0,240,255,0.2);
+      }
+      to{
+        box-shadow:0 0 40px rgba(0,240,255,0.5);
+      }
+    }
+
+    .testimonial p{
+      color:#d0d0d0;
+      line-height:2;
+      margin-bottom:25px;
+    }
+
+    .testimonial h4{
+      color:var(--cyan);
+      font-size:1.2rem;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-wrapper{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:40px;
+    }
+
+    .contact-form{
+      padding:40px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      background:#ffffff06;
+      border:1px solid #ffffff12;
+      padding:18px;
+      border-radius:14px;
+      color:white;
+      margin-bottom:20px;
+      outline:none;
+      transition:0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      border-color:var(--cyan);
+      box-shadow:0 0 20px rgba(0,240,255,0.15);
+    }
+
+    .contact-form button{
+      width:100%;
+      border:none;
+      padding:18px;
+      border-radius:14px;
+      font-weight:600;
+      background:linear-gradient(135deg,var(--cyan),var(--purple));
+      color:white;
+      cursor:pointer;
+      transition:0.4s;
+    }
+
+    .contact-form button:hover{
+      transform:translateY(-5px);
+    }
+
+    .contact-info{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .contact-box{
+      padding:30px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      transition:0.4s;
+    }
+
+    .contact-box:hover{
+      transform:translateX(10px);
+      border-color:#00f0ff66;
+    }
+
+    .contact-box i{
+      font-size:1.5rem;
+      color:var(--cyan);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      padding:40px 8%;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.06);
+      color:#9f9f9f;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-8px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:900px){
+
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#080b1f;
+        flex-direction:column;
+        align-items:center;
+        padding:30px 0;
+        display:none;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      section{
+        padding:90px 6%;
+      }
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+      }
+
+      .testimonial{
+        padding:45px 25px;
+      }
+
+      .founder-img{
+        width:100px;
+        height:100px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar" id="navbar">
+
+    <div class="nav-wrapper">
+
+      <a href="#" class="logo">ANTIVISUAL ENGINE</a>
+
+      <div class="menu-btn" id="menuBtn">
+        <i class="fa-solid fa-bars"></i>
       </div>
 
-      
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#features">Engine</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Founder</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-      <!--<div class="tm-next tm-intro-next">
-        <a href="#whatwedo" class="text-center tm-down-arrow-link">
-          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-bg">
+      <img src="img/infinite-loop-02.jpg" alt="Hero Background">
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-tag">
+        POWERED BY AI ANIIMS
+      </div>
+
+      <h1>
+        NEXT GEN<br>
+        ANTIVISUAL ENGINE
+      </h1>
+
+      <p>
+        Antivisual Engine is a futuristic AI generation system designed
+        for cinematic image creation, ultra resolution enhancement,
+        video generation and advanced visual experimentation.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#features" class="btn btn-primary">
+          <i class="fa-solid fa-bolt"></i>
+          Explore Engine
         </a>
-      </div>-->   
-    </section>
 
-    <section id="whatwedo" class="tm-section-pad-top">
-      
-      <div class="container">
+        <a href="#gallery" class="btn btn-secondary">
+          <i class="fa-solid fa-images"></i>
+          View Gallery
+        </a>
 
-            <div class="row tm-content-box"><!-- first row -->
-                <div class="col-lg-12 col-xl-12">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4 tm-section-title">Engine details</h2>
-                        <p class="mb-4 tm-intro-text">
-                          In 2025, AI ANIIMS created the Antivisual Engine. The engine was originally developed using JavaScript but it now runs on Python. This engine can generate images, videos and audio and it can also enhance images and videos from 2K up to 12K resolution quality.</p>
-                    </div>
-                </div>
-
-            </div><!-- first row -->
-            
-            <div class="row tm-content-box"><!-- second row -->
-        		<div class="col-lg-1">
-                    <i class="far fa-3x fa-chart-bar text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Image style types</h2>
-                        <p class="mb-4 tm-intro-text">
-                          Photography, Painting, Illustration, Drawing, 3D, Vector, Design, Art, Craft and Experimental.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-1">
-                    <i class="far fa-3x fa-comment-alt text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Latest Engine version</h2>
-                        <p class="mb-4 tm-intro-text">
-                          <b>32 Version</b>. Coming soon next revolution update.</p>
-                    </div>
-                </div>
-
-            </div><!-- second row -->
-            
-            <div class="row tm-content-box"><!-- third row -->
-        		<div class="col-lg-1">
-                    <i class="fas fa-3x fa-fingerprint text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Engine power GPU range</h2>
-                        <p class="mb-4 tm-intro-text">
-                      <strong>RTX 3050</strong> TO <strong>RTX 5090</strong> SERIES.</p>
-                          
-                          <!--<div class="tm-continue">
-                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Learn More</a>
-                        </div>-->
-                    </div>
-                </div>
-                
-                <div class="col-lg-1">
-                    <i class="fas fa-3x fa-users text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                      <h2 class="tm-text-primary mb-4">Engine run minimum requirement</h2>
-                        <p class="mb-4 tm-intro-text">
-                      RAM <b>32GB</b> TO <b>64GB</b>, Operating system <b>Windows 11</b>, Storage <b>134GB to 300GB, a quad-core <b>Intel</b> or <b>AMD</b> processor at <b>2.5 GHz</b> or faster and <b>DirectX 11 or 12</b> compatible graphics card.</p>
-                          
-                          <!--<div class="tm-continue">
-                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Details</a>
-                        </div>-->
-                    </div>
-                </div>
-
-            </div><!-- third row -->
-
-        </div>
-      
-    </section>
-    
-    <section id="testimonials" class="tm-section-pad-top tm-parallax-2">      
-      <div class="container tm-testimonials-content">
-        <div class="row">
-          <div class="col-lg-12 tm-content-box">
-            <h2 class="text-white text-center mb-4 tm-section-title">Testimonials</h2>
-            <p class="mx-auto tm-section-desc text-center">
-                My name is Don Shamal Milinda Punchihewa and I am from Sri Lanka. I want to create an AI image-generation engine and I have already started developing it. The name of this engine is “Antivisual Engine.”
-              </p>
-            <div class="mx-auto tm-gallery-container tm-gallery-container-2">
-              <div class="tm-testimonials-carousel">
-                <!--<figure class="tm-testimonial-item">
-                  <img src="img/testimonial-img-01.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>This background image includes a semi-transparent overlay layer. This section also has a parallax image effect.</blockquote>
-                  <figcaption>Catherine Win (Designer)</figcaption>
-                </figure>-->
-
-                <figure class="tm-testimonial-item">
-                  <img src="img/testimonial-img-02.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Antivisual Engine designer and developer. Image prompt designer.</blockquote>
-                  <figcaption>Shamal Milinda (FOUNDER)</figcaption>
-                </figure>
-
-                <!--<figure class="tm-testimonial-item">
-                  <img src="img/testimonial-img-03.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Nulla finibus ligula nec tortor convallis tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.</blockquote>
-                  <figcaption>Sandar Soft (Marketing)</figcaption>
-                </figure>
-
-                <figure class="tm-testimonial-item">
-                  <img src="img/testimonial-img-04.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Curabitur rutrum pharetra lobortis. Pellentesque vehicula, velit quis eleifend fermentum, erat arcu aliquet neque.</blockquote>
-                  <figcaption>Oliva Htoo (Designer)</figcaption>
-                </figure>
-
-                <figure class="tm-testimonial-item">
-                  <img src="img/testimonial-img-02.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Integer sit amet risus et erat imperdiet finibus. Nam lacus nunc, vulputate id ex eget, euismod auctor augue.</blockquote>
-                  <figcaption>Jacob Joker (CTO)</figcaption>
-                </figure>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tm-bg-overlay"></div>
-    </section>
-    
-    <section id="gallery" class="tm-section-pad-top">
-      <div class="container tm-container-gallery">
-        <div class="row">
-          <div class="text-center col-12">
-              <h2 class="tm-text-primary tm-section-title mb-4">Gallery</h2>
-              <p class="mx-auto tm-section-desc">
-                This all image generate using <b>Antivisual Engine</b>.
-              </p>
-          </div>            
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="mx-auto tm-gallery-container">
-                    <div class="grid tm-gallery">
-                      <a href="img/gallery-img-01.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-01.jpg" alt="Image 1" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Design Menu</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-02.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-02.jpg" alt="Image 2" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Fashion Cosplay</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-03.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-03.jpg" alt="Image 3" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Fashion Sportswear</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-04.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-04.jpg" alt="Image 4" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Experimental Cyber Couture</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-05.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-05.jpg" alt="Image 5" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Experimental Dreamwave</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-06.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-06.jpg" alt="Image 6" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Fashion Psychobilly</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-07.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-07.jpg" alt="Image 7" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Fashion Boho</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                      <a href="img/gallery-img-08.jpg">
-                        <figure class="effect-honey tm-gallery-item">
-                          <img src="img/gallery-tn-08.jpg" alt="Image 8" class="img-fluid">
-                          <figcaption>
-                            <h2><i>Style <span>Fashion Sportswear</span></i></h2>
-                          </figcaption>
-                        </figure>
-                      </a>
-                    </div>
-                </div>                
-            </div>        
-          </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="tm-section-pad-top tm-parallax-2">
-    
-      <div class="container tm-container-contact">
-        
-        <div class="row">
-            
-            <div class="text-center col-12">
-                <h2 class="tm-section-title mb-4">Contact Us</h2>
-                <p class="mb-5">
-                  
-                </p><br>
-            </div>
-            
-            <div class="col-sm-12 col-md-6">
-              <form action="" method="get">
-                <input id="name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
-                <input id="email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
-                <textarea id="message" name="message" rows="8" placeholder="Message" class="tm-input" required></textarea>
-                <button type="submit" class="btn tm-btn-submit">Submit</button>
-              </form>
-            </div>
-            
-            <div class="col-sm-12 col-md-6">
-
-                <!--<div class="contact-item">
-                  <a rel="nofollow" href="https://www.tooplate.com/contact" class="item-link">
-                      <i class="far fa-2x fa-comment mr-4"></i>
-                      <span class="mb-0">Chat Online</span>
-                  </a>              
-                </div>-->
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="mailto:visualaniims23@gmail.com" class="item-link">
-                      <i class="far fa-2x fa-envelope mr-4"></i>
-                      <span class="mb-0">visualaniims23@gmail.com</span>
-                  </a>              
-                </div>
-                
-                <!--<div class="contact-item">
-                  <a rel="nofollow" href="https://www.google.com/maps" class="item-link">
-                      <i class="fas fa-2x fa-map-marker-alt mr-4"></i>
-                      <span class="mb-0">Our Location</span>
-                  </a>              
-                </div>-->
-                
-                <div class="contact-item">
-                  <a rel="nofollow" href="tel:+94713075604" class="item-link">
-                      <i class="fas fa-2x fa-phone-square mr-4"></i>
-                      <span class="mb-0">+94713075604</span>
-                  </a>              
-                </div>
-
-                <div class="contact-item">
-                  <a rel="nofollow" href="tel:+94752143840" class="item-link">
-                      <i class="fas fa-2x fa-phone-square mr-4"></i>
-                      <span class="mb-0">+94752143840</span>
-                  </a>              
-                </div>
-                
-                <div class="contact-item">&nbsp;</div>
-            
-            </div>
-            
-            
-        </div><!-- row ending -->
-        
       </div>
 
-      	<footer class="text-center small tm-footer">
-          <p class="mb-0">
-          Copyright &copy; 2025 ANTIVISUAL ENGINE. All rights reserved.
-          
-           <a rel="nofollow" href="#" title="HTML templates"></a></p>
-        </footer>
+    </div>
 
-    </section>
-    
-    <script src="js/jquery-1.9.1.min.js"></script>     
-    <script src="slick/slick.min.js"></script>
-    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/easing.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
-    <script>
+  </section>
 
-      function getOffSet(){
-        var _offset = 450;
-        var windowHeight = window.innerHeight;
+  <!-- FEATURES -->
 
-        if(windowHeight > 500) {
-          _offset = 400;
-        } 
-        if(windowHeight > 680) {
-          _offset = 300
-        }
-        if(windowHeight > 830) {
-          _offset = 210;
-        }
+  <section id="features">
 
-        return _offset;
+    <div class="section-title">
+      <span>Engine Details</span>
+      <h2>Core Features</h2>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fa-solid fa-image"></i>
+        </div>
+
+        <h3>Visual Styles</h3>
+
+        <p>
+          Photography, Illustration, Painting, 3D, Vector,
+          Experimental Art, Concept Design and futuristic visual styles.
+        </p>
+      </div>
+
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <h3>Version 32</h3>
+
+        <p>
+          The latest Antivisual Engine version includes enhanced AI
+          rendering performance and advanced image synthesis.
+        </p>
+      </div>
+
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+
+        <h3>GPU Powered</h3>
+
+        <p>
+          Supports NVIDIA RTX 3050 up to RTX 5090 series graphics cards
+          for ultra fast rendering.
+        </p>
+      </div>
+
+      <div class="feature-card glass">
+        <div class="feature-icon">
+          <i class="fa-solid fa-memory"></i>
+        </div>
+
+        <h3>System Requirements</h3>
+
+        <p>
+          Windows 11, 32GB–64GB RAM, DirectX 11/12 support,
+          Intel or AMD quad core processor at 2.5 GHz.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIAL -->
+
+  <section id="testimonials">
+
+    <div class="section-title">
+      <span>Founder</span>
+      <h2>Developer Message</h2>
+    </div>
+
+    <div class="testimonial glass">
+
+      <img src="img/testimonial-img-02.jpg" alt="" class="founder-img">
+
+      <p>
+        My name is Don Shamal Milinda Punchihewa and I am from Sri Lanka.
+        I started creating the Antivisual Engine to push AI creativity
+        into a futuristic direction using advanced visual generation
+        and cinematic AI technologies.
+      </p>
+
+      <h4>Shamal Punchihewa - Founder</h4>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+
+    <div class="section-title">
+      <span>AI Creations</span>
+      <h2>Visual Gallery</h2>
+    </div>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item glass">
+        <img src="img/gallery-tn-08.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Fashion Sportwear</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item glass">
+        <img src="img/gallery-tn-02.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Fashion Cosplay</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item glass">
+        <img src="img/gallery-tn-03.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Fashion Sportwear</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item glass">
+        <img src="img/gallery-tn-04.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Experimental Cyber Couture</h3>
+        </div>
+      </div>
+
+      <!--<div class="gallery-item glass">
+        <img src="img/gallery-tn-05.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Dreamwave</h3>
+        </div>
+      </div>-->
+
+      <!--<div class="gallery-item glass">
+        <img src="img/gallery-tn-06.jpg" alt="">
+        <div class="gallery-overlay">
+          <h3>Psychobilly</h3>
+        </div>
+      </div>-->
+
+    </div>
+
+  </section>
+
+  
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title">
+      <span>Get In Touch</span>
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-wrapper">
+
+      <form class="contact-form glass">
+
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="email" placeholder="Your Email" required>
+
+        <textarea rows="7" placeholder="Your Message"></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+      <div class="contact-info">
+
+        <div class="contact-box glass">
+          <i class="fa-solid fa-envelope"></i>
+          <span>visualaniims23@gmail.com</span>
+        </div>
+
+        <div class="contact-box glass">
+          <i class="fa-solid fa-phone"></i>
+          <span>+94 71 307 5604</span>
+        </div>
+
+        <div class="contact-box glass">
+          <i class="fa-solid fa-phone"></i>
+          <span>+94 75 214 3840</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 ANTIVISUAL ENGINE - All Rights Reserved.
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const navbar = document.getElementById("navbar");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    // NAVBAR EFFECT
+
+    window.addEventListener("scroll",()=>{
+
+      if(window.scrollY > 50){
+        navbar.classList.add("scrolled");
+      }else{
+        navbar.classList.remove("scrolled");
       }
 
-      function setParallaxPosition($doc, multiplier, $object){
-        var offset = getOffSet();
-        var from_top = $doc.scrollTop(),
-          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
-        $object.css({"background-position" : bg_css });
-      }
+    });
 
-      // Parallax function       
-      var background_image_parallax = function($object, multiplier, forceSet){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        // $object.css({"background-attatchment" : "fixed"});
+    // MOBILE MENU
 
-        if(forceSet) {
-          setParallaxPosition($doc, multiplier, $object);
-        } else {
-          $(window).scroll(function(){          
-            setParallaxPosition($doc, multiplier, $object);
-          });
-        }
-      };
+    menuBtn.addEventListener("click",()=>{
 
-      var background_image_parallax_2 = function($object, multiplier){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        $object.css({"background-attachment" : "fixed"});
-        
-        $(window).scroll(function(){
-          if($(window).width() > 768) {
-            var firstTop = $object.offset().top,
-                pos = $(window).scrollTop(),
-                yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
+      navLinks.classList.toggle("active");
 
-            var bg_css = 'center ' + yPos + 'px';
+    });
 
-            $object.css({"background-position" : bg_css });
-          } else {
-            $object.css({"background-position" : "center" });
-          }
-        });
-      };
-      
-      $(function(){
-        // Hero Section - Background Parallax
-        background_image_parallax($(".tm-parallax"), 0.30, false);
-        background_image_parallax_2($("#contact"), 0.80);   
-        background_image_parallax_2($("#testimonials"), 0.80);   
-        
-        // Handle window resize
-        window.addEventListener('resize', function(){
-          background_image_parallax($(".tm-parallax"), 0.30, true);
-        }, true);
+    // CLOSE MENU
 
-        // Detect window scroll and update navbar
-        $(window).scroll(function(e){          
-          if($(document).scrollTop() > 120) {
-            $('.tm-navbar').addClass("scroll");
-          } else {
-            $('.tm-navbar').removeClass("scroll");
-          }
-        });
-        
-        // Close mobile menu after click 
-        $('#tmNav a').on('click', function(){
-          $('.navbar-collapse').removeClass('show'); 
-        })
+    document.querySelectorAll(".nav-links a").forEach(link=>{
 
-        // Scroll to corresponding section with animation
-        $('#tmNav').singlePageNav({
-          'easing': 'easeInOutExpo',
-          'speed': 600
-        });        
-        
-        // Add smooth scrolling to all links
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
+      link.addEventListener("click",()=>{
 
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 600, 'easeInOutExpo', function(){
-              window.location.hash = hash;
-            });
-          } // End if
-        });
+        navLinks.classList.remove("active");
 
-        // Pop up
-        $('.tm-gallery').magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: { enabled: true }
-        });
-
-        $('.tm-testimonials-carousel').slick({
-          dots: true,
-          prevArrow: false,
-          nextArrow: false,
-          infinite: false,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2
-              }
-            }, 
-            {
-              breakpoint: 480,
-              settings: {
-                  slidesToShow: 1
-              }                 
-            }
-          ]
-        });
-
-        // Gallery
-        $('.tm-gallery').slick({
-          dots: true,
-          infinite: false,
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          responsive: [
-          {
-            breakpoint: 1199,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-        });
       });
-    </script>
-  </body>
+
+    });
+
+    // SCROLL REVEAL
+
+    const revealElements = document.querySelectorAll(
+      ".feature-card, .gallery-item, .testimonial, .contact-box, .contact-form"
+    );
+
+    const revealOnScroll = () => {
+
+      revealElements.forEach((el)=>{
+
+        const top = el.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0px)";
+
+        }
+
+      });
+
+    };
+
+    revealElements.forEach((el)=>{
+
+      el.style.opacity = "0";
+      el.style.transform = "translateY(40px)";
+      el.style.transition = "all 1s ease";
+
+    });
+
+    window.addEventListener("scroll", revealOnScroll);
+
+    revealOnScroll();
+
+  </script>
+
+</body>
 </html>
